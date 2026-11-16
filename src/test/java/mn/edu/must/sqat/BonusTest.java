@@ -65,4 +65,10 @@ class BonusTest {
     void du7_fiveStreakBelowThreshold() {
         assertEquals(3, DataFlowTargets.bonus(new int[] {1, 1, 1, 1, 1}, 6));
     }
+
+    @Test
+    @DisplayName("KILL_M2: {1,1,1,1,0,1}, thr=6 -> 0; present=5 but longest streak=4, best must come from streak (line 43)")
+    void killM2_presentNotEqualStreak() {
+        assertEquals(0, DataFlowTargets.bonus(new int[] {1, 1, 1, 1, 0, 1}, 6));
+    }
 }
